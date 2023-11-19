@@ -1,0 +1,137 @@
+1. Base de conhecimento com nomes e idades:
+
+pessoa(joao, 45).
+pessoa(maria, 32).
+pessoa(ana, 28).
+pessoa(carlos, 34).
+pessoa(lucia, 50).
+pessoa(fernando, 22).
+pessoa(paula, 38).
+pessoa(ricardo, 47).
+pessoa(silvia, 29).
+pessoa(tomas, 31).
+mais_de_30(Nome) :- pessoa(Nome, Idade), Idade > 30.
+
+2. Base de conhecimento com cores e objetos:
+
+objeto_corda(cadeira, vermelho).
+objeto_corda(mesa, azul).
+objeto_corda(carro, verde).
+objeto_corda(celular, preto).
+objeto_corda(livro, verde).
+objeto_corda(garrafa, verde).
+objeto_corda(vaso, amarelo).
+objeto_corda(quadro, vermelho).
+objeto_corda(teclado, branco).
+objeto_corda(mochila, verde).
+cor_associada(Objeto) :- objeto_corda(Objeto, verde).
+
+3. Base de conhecimento com cidades e países:
+
+cidade_pais(sao_paulo, brasil).
+cidade_pais(rio_de_janeiro, brasil).
+cidade_pais(brasilia, brasil).
+cidade_pais(lisboa, portugal).
+cidade_pais(porto, portugal).
+cidade_pais(madrid, espanha).
+cidade_pais(barcelona, espanha).
+cidade_pais(paris, franca).
+cidade_pais(lyon, franca).
+cidade_pais(marselha, franca).
+cidades_do_pais(Pais, Cidade) :- cidade_pais(Cidade, Pais).
+
+4. Base de conhecimento com produtos, preços e estoques:
+
+produto_estoque_preco(arroz, 15, 100).
+produto_estoque_preco(feijao, 10, 0).
+produto_estoque_preco(macarrao, 8, 50).
+produto_estoque_preco(oleo, 12, 30).
+produto_estoque_preco(acucar, 5, 0).
+produto_estoque_preco(farinha, 7, 20).
+produto_estoque_preco(leite, 10, 10).
+produto_estoque_preco(ovo, 20, 0).
+produto_estoque_preco(manteiga, 6, 15).
+produto_estoque_preco(queijo, 18, 5).
+em_falta(Produto) :- produto_estoque_preco(Produto, _, 0).
+
+5. Base de conhecimento com músicas e gêneros:
+
+musica_genero('Let it Be', rock).
+musica_genero('Bohemian Rhapsody', rock).
+musica_genero('Shape of You', pop).
+musica_genero('Rolling in the Deep', pop).
+musica_genero('Thriller', pop).
+musica_genero('Halo', pop).
+musica_genero('Stairway to Heaven', rock).
+musica_genero('Sorry', pop).
+musica_genero('One Dance', hiphop).
+musica_genero('Hotline Bling', hiphop).
+musicas_por_genero(Genero, Musica) :- musica_genero(Musica, Genero).
+
+6. Base de conhecimento com animais e espécies:
+
+animal_especie(leao, mamifero).
+animal_especie(tigre, mamifero).
+animal_especie(elefante, mamifero).
+animal_especie(zebra, mamifero).
+animal_especie(jacare, reptil).
+animal_especie(cobra, reptil).
+animal_especie(periquito, ave).
+animal_especie(pinguim, ave).
+animal_especie(truta, peixe).
+animal_especie(salmao, peixe).
+animais_da_especie(Especie, Animal) :- animal_especie(Animal, Especie).
+
+7. Base de conhecimento com alunos e notas:
+
+aluno_nota(ana, 8).
+aluno_nota(beto, 4).
+aluno_nota(carla, 9).
+aluno_nota(diego, 5).
+aluno_nota(eliana, 7).
+aluno_nota(fabio, 3).
+aluno_nota(gisele, 6).
+aluno_nota(henrique, 5).
+aluno_nota(iris, 9).
+aluno_nota(julio, 2).
+aprovado(Aluno) :- aluno_nota(Aluno, Nota), Nota >= 5.
+
+8. Base de conhecimento com cidades e distâncias:
+
+distancia_cidades(sao_paulo, rio_de_janeiro, 430).
+distancia_cidades(sao_paulo, brasilia, 1200).
+distancia_cidades(sao_paulo, salvador, 1962).
+distancia_cidades(sao_paulo, fortaleza, 3127).
+distancia_cidades(rio_de_janeiro, salvador, 1649).
+distancia_cidades(rio_de_janeiro, fortaleza, 2805).
+distancia_cidades(brasilia, salvador, 1446).
+distancia_cidades(brasilia, fortaleza, 2200).
+mais_proxima(Origem, Destino, Distancia) :- distancia_cidades(Origem, Destino, Distancia), \+ (distancia_cidades(Origem, _, D), D < Distancia).
+
+9. Base de conhecimento com países, capitais e línguas:
+
+pais_capital_lingua(brasil, brasilia, portugues).
+pais_capital_lingua(portugal, lisboa, portugues).
+pais_capital_lingua(espanha, madrid, espanhol).
+pais_capital_lingua(franca, paris, frances).
+pais_capital_lingua(alemanha, berlim, alemao).
+pais_capital_lingua(italia, roma, italiano).
+pais_capital_lingua(inglaterra, londres, ingles).
+pais_capital_lingua(eua, washington, ingles).
+pais_capital_lingua(canada, ottawa, ingles).
+pais_capital_lingua(canada, ottawa, frances).
+paises_falam_lingua(Lingua, Pais) :- pais_capital_lingua(Pais, _, Lingua).
+
+10. Base de conhecimento com ingredientes e receitas:
+
+receita_ingrediente(pizza, queijo).
+receita_ingrediente(pizza, tomate).
+receita_ingrediente(salada, alface).
+receita_ingrediente(salada, tomate).
+receita_ingrediente(bolo, farinha).
+receita_ingrediente(bolo, ovo).
+receita_ingrediente(sopa, cenoura).
+receita_ingrediente(sopa, batata).
+receita_ingrediente(frango_assado, frango).
+receita_ingrediente(frango_assado, alecrim).
+receitas_com_ingrediente(Ingrediente, Receita) :- receita_ingrediente(Receita, Ingrediente).
